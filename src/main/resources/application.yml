@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: virtual-man
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1111
+    url: jdbc:mysql://localhost:3306/virtual_man?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai&useSSL=false
+  profiles:
+    active: local
+
+
+server:
+  port: 8080
+  address: 0.0.0.0
+  servlet:
+    session:
+      cookie:
+        name: SESSION
+        max-age: 604800
+        http-only: true
+
+
+
+
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  # MyBatis-Plus 配置项
+  configuration:
+
+    # 是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn
+    map-underscore-to-camel-case: false    # 不开启驼峰命名自动映射
+  # Mapper XML 文件的位置
+  mapper-locations: classpath*:mapper/*.xml
+  # 实体类的包路径，用于指定实体类的别名
+  type-aliases-package: com.example.virtualman.pojo   # 实体类所在的包路径，指定后可以使用实体类名作为别名
+  # 全局配置
+  global-config:
+    # 数据库配置
+    db-config:
+      # 逻辑删除字段名
+      logic-delete-field: deleted # 逻辑删除字段名
+      # 逻辑已删除值（默认值：1）
+      logic-delete-value: 1 # 逻辑删除的值
+      # 逻辑未删除值（默认值：0）
+      logic-not-delete-value: 0 # 逻辑未删除的值
